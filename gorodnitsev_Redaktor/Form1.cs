@@ -43,14 +43,8 @@ namespace gorodnitsev_Redaktor
             History = new List<Image>();
             History.Add(new Bitmap(655, 416));
 
-            trackBar2.Minimum = -2;
+            trackBar2.Minimum = 0;
             trackBar2.Maximum = 10;
-
-            
-            
-
-
-            
 
 
         }
@@ -96,13 +90,63 @@ namespace gorodnitsev_Redaktor
 
         private void PicDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            Graphics g = Graphics.FromImage(picDrawingSurface.Image);
-            Rectangle pathRect = new Rectangle(X, Y, XO, YO);
-            currentPath.AddRectangle(pathRect);
-            g.DrawPath(currentPen, currentPath);
-            oldLocation = e.Location;
-            g.Dispose();
-            picDrawingSurface.Invalidate();
+            if (figuri == 0)
+            {
+                Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+
+                currentPath.AddLine(oldLocation, e.Location);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                picDrawingSurface.Invalidate();
+
+            }
+            if (figuri == 2)
+            {
+                Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+                Rectangle pathRect2 = new Rectangle(X, Y, XO, YO);
+                currentPath.AddEllipse(pathRect2);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                picDrawingSurface.Invalidate();
+            }
+            if (figuri == 3)
+            {
+                Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+                Rectangle pathRect3 = new Rectangle(X, Y, XO, YO);
+                currentPath.AddEllipse(pathRect3);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                picDrawingSurface.Invalidate();
+            }
+            if (figuri == 4)
+            {
+                Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+                Rectangle pathRect3 = new Rectangle(X, Y, XO, YO);
+                currentPath.AddRectangle(pathRect3);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                picDrawingSurface.Invalidate();
+
+            }
+            else
+            {
+                Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+                Rectangle pathRect = new Rectangle(X, Y, XO, YO);
+                currentPath.AddRectangle(pathRect);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                picDrawingSurface.Invalidate();
+          
+            }
+
+            
+
+
 
 
 
@@ -348,7 +392,7 @@ namespace gorodnitsev_Redaktor
             solidToolStripMenuItem.Checked = true;
             dotToolStripMenuItem.Checked = false;
             dashDotDotToolStripMenuItem.Checked = false;
-            figuri = 0;
+
 
         }
 
@@ -359,7 +403,7 @@ namespace gorodnitsev_Redaktor
             solidToolStripMenuItem.Checked = false;
             dotToolStripMenuItem.Checked = true;
             dashDotDotToolStripMenuItem.Checked = false;
-            figuri = 0;
+
 
         }
 
@@ -370,19 +414,14 @@ namespace gorodnitsev_Redaktor
             solidToolStripMenuItem.Checked = false;
             dotToolStripMenuItem.Checked = false;
             dashDotDotToolStripMenuItem.Checked = true;
-            figuri = 0;
+ 
 
         }
 
 
         private void StarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            currentPen.DashStyle = DashStyle.Solid;
 
-            solidToolStripMenuItem.Checked = false;
-            dotToolStripMenuItem.Checked = false;
-            dashDotDotToolStripMenuItem.Checked = true;
-            figuri = 1;
         }
 
         private void ToolStripButton4_Click(object sender, EventArgs e)
@@ -402,6 +441,60 @@ namespace gorodnitsev_Redaktor
         private void TrackBar2_Scroll(object sender, EventArgs e)
         {
             picDrawingSurface.Image = Zoom(imgOriginal, trackBar2.Value);
+        }
+
+        private void SquareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = DashStyle.Solid;
+
+            solidToolStripMenuItem.Checked = false;
+            dotToolStripMenuItem.Checked = false;
+            dashDotDotToolStripMenuItem.Checked = true;
+            figuri = 1;
+        }
+
+        private void StraightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = DashStyle.Solid;
+
+            solidToolStripMenuItem.Checked = false;
+            dotToolStripMenuItem.Checked = false;
+            dashDotDotToolStripMenuItem.Checked = true;
+            figuri = 2;
+        }
+
+        private void PenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = DashStyle.Solid;
+
+            solidToolStripMenuItem.Checked = true;
+            dotToolStripMenuItem.Checked = false;
+            dashDotDotToolStripMenuItem.Checked = false;
+
+            figuri = 0;
+        }
+
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = DashStyle.Solid;
+
+            solidToolStripMenuItem.Checked = true;
+            dotToolStripMenuItem.Checked = false;
+            dashDotDotToolStripMenuItem.Checked = false;
+
+            figuri = 3;
+        }
+
+        private void ToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = DashStyle.Solid;
+
+            solidToolStripMenuItem.Checked = true;
+            dotToolStripMenuItem.Checked = false;
+            dashDotDotToolStripMenuItem.Checked = false;
+
+
+            figuri = 4;
         }
     }
 }

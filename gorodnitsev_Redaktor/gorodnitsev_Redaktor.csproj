@@ -116,5 +116,23 @@
   <ItemGroup>
     <None Include="Resources\ss.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allalaaditud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ss1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allalaaditud1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\das.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sd.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

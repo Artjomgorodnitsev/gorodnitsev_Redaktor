@@ -12,7 +12,7 @@ namespace gorodnitsev_Redaktor
 {
     public partial class Form2 : Form
     {
-        Color colorResult;
+        public Color colorResult;
         Color color;
 
         public Form2()
@@ -131,6 +131,11 @@ namespace gorodnitsev_Redaktor
         private void Button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
